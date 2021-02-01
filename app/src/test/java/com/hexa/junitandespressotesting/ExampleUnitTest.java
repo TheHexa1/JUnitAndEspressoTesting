@@ -12,6 +12,16 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+        assertEquals(4, Helper.addition(2, 2));
+    }
+
+    @Test
+    public void subtraction_isCorrect() {
+        assertEquals(3, Helper.subtraction(5, 2));
+    }
+
+    @Test
+    public void testConvertCelsiusToFahrenheit() {
+        assertEquals(212, Helper.convertCelsiusToFahrenheit(100), 0.001);
     }
 }

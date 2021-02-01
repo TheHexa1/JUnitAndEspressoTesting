@@ -14,6 +14,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.hexa.junitandespressotesting.ImagesData.getData;
+
 public class MainActivity extends AppCompatActivity implements ImagesAdapter.ItemClickListener {
 
     private RecyclerView rv_images;
@@ -32,27 +34,14 @@ public class MainActivity extends AppCompatActivity implements ImagesAdapter.Ite
 
     }
 
-    //data source
-    private List<String> getData(){
-        List<String> images = new ArrayList<>();
-
-        images.add("https://res.cloudinary.com/dk4ocuiwa/image/upload/v1575163942/RecipesApi/5928474985_19b4ba972a_z4fd1.jpg");
-        images.add("https://res.cloudinary.com/dk4ocuiwa/image/upload/v1575163942/RecipesApi/IMG_67561180x180c6a2.jpg");
-        images.add("https://res.cloudinary.com/dk4ocuiwa/image/upload/v1575163942/RecipesApi/BBQPorkSlider1of115202.jpg");
-        images.add("https://res.cloudinary.com/dk4ocuiwa/image/upload/v1575163942/RecipesApi/596220f796.jpg");
-        images.add("https://res.cloudinary.com/dk4ocuiwa/image/upload/v1575163942/RecipesApi/easyicecreamcake_300d8c35460.jpg");
-
-        return images;
-    }
-
     @Override
     public void onItemClick(View view, int position) {
         openImage(getData().get(position));
     }
 
-    private void openImage(String image_url){
+    private void openImage(int image_src){
         Intent i = new Intent(this, DisplayImage.class);
-        i.putExtra("image_url", image_url);
+        i.putExtra("image_src", image_src);
         startActivity(i);
     }
 }

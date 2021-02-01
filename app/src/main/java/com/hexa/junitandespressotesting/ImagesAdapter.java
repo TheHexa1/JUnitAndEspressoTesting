@@ -14,13 +14,13 @@ import java.util.List;
 
 public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder> {
 
-    private List<String> mData;
+    private List<Integer> mData;
     private LayoutInflater mInflater;
     private Context mContext;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    ImagesAdapter(Context context, List<String> data) {
+    ImagesAdapter(Context context, List<Integer> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.mContext = context;
@@ -36,8 +36,11 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String image = mData.get(position);
-        Glide.with(mContext).load(image).into(holder.iv_item);
+        int image_src = mData.get(position);
+        Glide.with(mContext).load(image_src).into(holder.iv_item);
+
+        //this tag will be useful while testing
+        holder.iv_item.setTag(position);
     }
 
     // total number of rows
